@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.js": "/thomas-portfolio/static/js/main.ec1c358a.js",
+    "static/js/377.03ddbe2f.chunk.js": "/thomas-portfolio/static/js/377.03ddbe2f.chunk.js",
+    "static/media/Soriphen - Helm.mp3": "/thomas-portfolio/static/media/Soriphen - Helm.ea39850bf5c3a59625dc.mp3",
+    "static/media/spacestagramPic.png": "/thomas-portfolio/static/media/spacestagramPic.2e33ce6a02313890980f.png",
+    "static/media/Soriphen - Statuesque.mp3": "/thomas-portfolio/static/media/Soriphen - Statuesque.1e22898f5033a97aeef7.mp3",
+    "static/media/Soriphen - Dresser [instrumental].mp3": "/thomas-portfolio/static/media/Soriphen - Dresser [instrumental].31b0bcb745d30b4142e3.mp3",
+    "static/media/Soriphen - Cabal.mp3": "/thomas-portfolio/static/media/Soriphen - Cabal.40f2186981fdae9e1961.mp3",
+    "static/media/maskPic.png": "/thomas-portfolio/static/media/maskPic.e4d5be7a0666c51c017c.png",
+    "static/media/statuesquePic.png": "/thomas-portfolio/static/media/statuesquePic.9a3f77834208a8368d46.png",
+    "static/media/sequencerPic.png": "/thomas-portfolio/static/media/sequencerPic.d75fd2d499c3a72e617b.png",
+    "static/media/aircallPic.png": "/thomas-portfolio/static/media/aircallPic.31988660195e607ae4e4.png",
+    "static/media/exerciseTrkPic.png": "/thomas-portfolio/static/media/exerciseTrkPic.2b7417498fe26076306c.png",
+    "static/media/blackPic.png": "/thomas-portfolio/static/media/blackPic.772d1400fc49fd6d3c8a.png",
+    "index.html": "/thomas-portfolio/index.html",
+    "main.ec1c358a.js.map": "/thomas-portfolio/static/js/main.ec1c358a.js.map",
+    "377.03ddbe2f.chunk.js.map": "/thomas-portfolio/static/js/377.03ddbe2f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.ec1c358a.js"
+  ]
+}
