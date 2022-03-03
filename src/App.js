@@ -22,6 +22,9 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
+  Spacer,
+  Wrap,
+  WrapItem,
 } from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
 
@@ -144,7 +147,7 @@ function WorksBox({ worksText, pic, siteLink, codeLink }) {
         whileHover={{
           opacity: 1,
         }}
-        onTap={isMobile ? toggleOpacityState : undefined}
+        onTap={isMobile ? toggleOpacityState : undefined} // This might cause issues for mobile screens with width resolutions higher than 1400px or so
         animate={{ opacity: opacityState }}
       >
         <VStack
@@ -156,31 +159,34 @@ function WorksBox({ worksText, pic, siteLink, codeLink }) {
           <Text textAlign="center">{worksText}</Text>
           {/* Perhaps turn this into a component down the road */}
           <Divider size="md" />
-          <HStack>
-            <Link
-              _hover={{ textTransform: 'none' }}
-              href={siteLink}
-              position="relative"
-              top={5}
-              isExternal
-            >
-              <Button rightIcon={<FaArrowRight />} variant="outline">
-                View Live
-              </Button>
-            </Link>
-
-            <Link
-              _hover={{ textTransform: 'none' }}
-              href={codeLink}
-              position="relative"
-              top={5}
-              isExternal
-            >
-              <Button rightIcon={<FaArrowRight />} variant="outline">
-                View Code
-              </Button>
-            </Link>
-          </HStack>
+          <Wrap justify="center" spacing="10px">
+            <WrapItem>
+              <Link
+                _hover={{ textTransform: 'none' }}
+                href={siteLink}
+                position="relative"
+                top={1}
+                isExternal
+              >
+                <Button rightIcon={<FaArrowRight />} variant="outline">
+                  View Live
+                </Button>
+              </Link>
+            </WrapItem>
+            <WrapItem>
+              <Link
+                _hover={{ textTransform: 'none' }}
+                href={codeLink}
+                position="relative"
+                top={1}
+                isExternal
+              >
+                <Button rightIcon={<FaArrowRight />} variant="outline">
+                  View Code
+                </Button>
+              </Link>
+            </WrapItem>
+          </Wrap>
         </VStack>
       </MotionBox>
     </MotionGridItem>
@@ -354,7 +360,7 @@ function MusicBox({ songsText, pic, siteLink, codeLink, song }) {
               {/* Perhaps turn this into a component down the road */}
               <Divider size="md" />
               <Button
-                top={5}
+                top={1}
                 rightIcon={isPlaying ? <FaStopCircle /> : <FaPlayCircle />}
                 variant="outline"
                 onClick={() => playMusic()}
@@ -455,32 +461,6 @@ function TopHeading() {
           </Link>
         </Box>
       </VStack>
-      {/* <Flex position="relative" w="full" mt="70px" mb={5} ps={0}>
-        <ColorModeSwitcher />
-        <MotionHeading
-          as="h1"
-          fontSize={60}
-          variants={sentence}
-          initial="hidden"
-          animate="visible"
-        >
-          {line1.split('').map((char, index) => {
-            return (
-              <MotionText as="span" key={char + '-' + index} variants={letter}>
-                {char}
-              </MotionText>
-            );
-          })}
-          <Divider />
-          {line3.split('').map((char, index) => {
-            return (
-              <MotionText as="span" key={char + '-' + index} variants={letter}>
-                {char}
-              </MotionText>
-            );
-          })}
-        </MotionHeading>
-      </Flex> */}
       <VStack
         mt={20}
         mb={10}
