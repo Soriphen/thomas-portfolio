@@ -22,11 +22,10 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
-  Spacer,
 } from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
 
-import { animate, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import * as Tone from 'tone';
 
