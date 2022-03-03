@@ -2,6 +2,7 @@
   "name": "thomas-portfolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://Soriphen.github.io/thomas-portfolio",
   "dependencies": {
     "@chakra-ui/react": "^1.8.5",
     "@emotion/react": "^11.8.1",
