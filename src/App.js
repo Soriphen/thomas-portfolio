@@ -5,7 +5,6 @@ import {
   Text,
   Link,
   VStack,
-  HStack,
   Image,
   Grid,
   Heading,
@@ -22,9 +21,9 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
-  Spacer,
   Wrap,
   WrapItem,
+  Spacer,
 } from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
 
@@ -67,6 +66,30 @@ const theme = extendTheme({
         },
         md: {
           borderBottomWidth: '2px',
+        },
+      },
+      variants: {
+        primary: props => ({
+          // borderColor: mode('black', 'pink')(props),
+          // position: 'absolute',
+          bgColor: 'blue',
+          height: '1px',
+          // borderBottomWidth: '1px',
+          // border: 0,
+          // opacity: 0.6,
+        }),
+      },
+    },
+    Button: {
+      variants: {
+        solid: props => ({
+          borderRadius: '0',
+          border: '1px',
+          // borderColor: mode('blue', 'purple')(props),
+          // outline: 'blue',
+        }),
+        outline: {
+          borderRadius: '0',
         },
       },
     },
@@ -431,7 +454,7 @@ function TopHeading() {
               </MotionText>
             );
           })}
-          <Divider />
+          <Divider variant="solid" />
           {nameChange.split('').map((char, index) => {
             return (
               <MotionText as="span" key={char + '-' + index} variants={letter}>
