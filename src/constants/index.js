@@ -28,3 +28,11 @@ export const codeLinks = {
   spacestagramLink: 'https://github.com/Soriphen/spacestagram',
   aircallLink: 'https://github.com/Soriphen/speer-technologies-aircall',
 };
+
+export const navData = [
+  { label: 'Top' },
+  { label: 'Works' },
+  { label: 'Music' },
+  { label: 'Resume' },
+  { label: 'Contact' },
+];

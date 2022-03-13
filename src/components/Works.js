@@ -15,6 +15,8 @@ import {
   useBreakpointValue,
   Wrap,
   WrapItem,
+  Flex,
+  Spacer,
 } from '@chakra-ui/react';
 
 import { motion } from 'framer-motion';
@@ -29,8 +31,9 @@ import { worksText } from '../constants';
 import { siteLinks, codeLinks } from '../constants';
 
 import { FaArrowRight } from 'react-icons/fa';
+import Nav from './Nav';
 
-function WorksBox({ worksText, pic, siteLink, codeLink }) {
+function WorksBox({ worksText, pic, siteLink, codeLink, work }) {
   const MotionBox = motion(Box);
   const MotionGridItem = motion(GridItem);
   const customBgCol = useColorModeValue('#BFDCBC', '#CA8953');
@@ -49,8 +52,37 @@ function WorksBox({ worksText, pic, siteLink, codeLink }) {
   });
 
   return (
-    <MotionGridItem ref={ref} position="relative" overflow="hidden" w="full">
-      <Image w="full" h={300} src={pic} objectFit="cover" align="left" />
+    <MotionGridItem
+      bgColor={
+        work === 'sequencer'
+          ? 'rbg(222, 221, 223)'
+          : work === 'exercise'
+          ? 'rgb(30, 28, 31)'
+          : work === 'spacestagram'
+          ? 'rgb(250, 237, 187)'
+          : work === 'aircall'
+          ? 'rgb(38, 49, 64)'
+          : undefined
+      }
+      ref={ref}
+      // w={400}
+      position="relative"
+      display="flex"
+      overflow="hidden"
+      justifyContent="center"
+    >
+      <Image
+        // left="calc(-10px + 20%)"
+        position="relative"
+        h={300}
+        src={pic}
+        // border="1px"
+        objectFit="cover"
+        // backgroundPosition="center"
+        align="left"
+        transform={work === 'aircall' ? 'scale(1.1)' : undefined}
+        top={work === 'aircall' ? -2 : undefined}
+      />
 
       <MotionBox
         position="absolute"
@@ -122,57 +154,85 @@ function Works() {
         </Text>
       </Heading>
       <Divider />
-      <Grid templateColumns={!isMobile ? 'repeat(2, 1fr)' : undefined} gap={6}>
+      <Grid
+        // w={500}
+
+        templateColumns={{
+          base: 'repeat(1, minmax(100px, 100%))',
+          md: 'repeat(2, minmax(100px, 100%))',
+        }}
+        gap={6}
+      >
         <WorksBox
           worksText={worksText.sequencerTxt}
           pic={sequencerPic}
           siteLink={siteLinks.sequencerLink}
           codeLink={codeLinks.sequencerLink}
+          work="sequencer"
         />
         <WorksBox
           worksText={worksText.exerciseTxt}
           pic={exerciseTrkPic}
           siteLink={siteLinks.exerciseLink}
           codeLink={codeLinks.exerciseLink}
+          work="exercise"
         />
         <WorksBox
           worksText={worksText.spacestagramTxt}
           pic={spacestagramPic}
           siteLink={siteLinks.spacestagramLink}
           codeLink={codeLinks.spacestagramLink}
+          work="spacestagram"
         />
         <WorksBox
           worksText={worksText.aircallTxt}
           pic={aircallPic}
           siteLink={siteLinks.aircallLink}
           codeLink={codeLinks.aircallLink}
+          work="aircall"
         />
       </Grid>
     </>
   );
 }
 
-export default function WorksSection() {
-  return (
-    <VStack w="full" border="4px" p={10} alignItems="flex-start">
-      <Heading>Developer</Heading>
-      <Heading size="md">
-        <Text letterSpacing={10}>MERN Stack</Text>
-      </Heading>
-      <Divider />
-      <Works />
-      <Divider />
-      <Box display="flex" justifyContent="center" w="full">
-        <Link
-          _hover={{ textTransform: 'none' }}
-          href={'https://github.com/Soriphen'}
-          isExternal
-        >
-          <Button h={20} mt={5} size="lg">
-            See more on Github
-          </Button>
-        </Link>
-      </Box>
-    </VStack>
-  );
+export default function WorksSection({ whatSection, setWhatSection }) {
+  if (whatSection === 'Works') {
+    return (
+      <VStack
+        w="full"
+        border={{ base: 0, md: 0, lg: '4px' }}
+        p={{ base: 0, md: 0, lg: 10 }}
+        mt={{ base: 5, lg: 0 }}
+        mb={{ base: 5, lg: 0 }}
+        alignItems="flex-start"
+      >
+        <Flex w="full">
+          <Heading>Developer</Heading>
+          <Spacer />
+          <Nav setWhatSection={setWhatSection} />
+        </Flex>
+
+        <Heading size="md">
+          <Text letterSpacing={10}>MERN Stack</Text>
+        </Heading>
+        <Divider />
+        <Works />
+        <Divider />
+        <Box display="flex" justifyContent="center" w="full">
+          <Link
+            _hover={{ textTransform: 'none' }}
+            href={'https://github.com/Soriphen'}
+            isExternal
+          >
+            <Button h={20} mt={5} size="lg">
+              See more on Github
+            </Button>
+          </Link>
+        </Box>
+      </VStack>
+    );
+  } else {
+    return null;
+  }
 }

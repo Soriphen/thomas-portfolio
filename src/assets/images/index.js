@@ -5,6 +5,7 @@ import aircallPic from './aircallPic.png';
 import statuesquePic from './statuesquePic.png';
 import blackPic from './blackPic.png';
 import maskPic from './maskPic.png';
+import resume from './Thomas_Tesfaldet_Web_Developer_Resume.pdf';
 
 export {
   sequencerPic,
@@ -14,4 +15,5 @@ export {
   statuesquePic,
   blackPic,
   maskPic,
+  resume,
 };

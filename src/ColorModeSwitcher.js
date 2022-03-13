@@ -15,7 +15,7 @@ export const ColorModeSwitcher = props => {
       variant="ghost"
       color="current"
       onClick={toggleColorMode}
-      position="absolute"
+      // position="absolute"
       alignItems="center"
       display="flex"
       h="full"

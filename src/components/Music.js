@@ -18,6 +18,8 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
+  Spacer,
+  Center,
 } from '@chakra-ui/react';
 
 import { motion } from 'framer-motion';
@@ -30,8 +32,9 @@ import { statuesquePic, maskPic, blackPic } from '../assets/images';
 import { songsText } from '../constants';
 
 import { FaPlayCircle, FaStopCircle } from 'react-icons/fa';
+import Nav from './Nav';
 
-function MusicBox({ songsText, pic, siteLink, codeLink, song }) {
+function MusicBox({ songsText, pic, song }) {
   const vol = React.useRef();
   if (!vol.current) {
     vol.current = new Tone.Volume(-5).toDestination();
@@ -101,73 +104,82 @@ function MusicBox({ songsText, pic, siteLink, codeLink, song }) {
   // console.log(player.current);
 
   return (
-    <GridItem ref={ref} position="relative" overflow="hidden" w="full">
-      <Flex>
-        <Slider
-          orientation="vertical"
-          aria-label="slider-volume"
-          min={-45}
-          max={0}
-          defaultValue={player.current.volume.value}
-          onChange={handleVolChange}
-          value={volState}
-          bgGradient={`linear(to-r, ${customBgCol}, black)`}
-          borderTopLeftRadius={5}
-          borderBottomLeftRadius={5}
-          w={14}
-          h={300}
-        >
-          <SliderTrack>
-            <SliderFilledTrack />
-          </SliderTrack>
-          <SliderThumb />
-        </Slider>
-        <Box w="full" position="relative">
-          <Image w="full" h={300} src={pic} objectFit="cover" align="left" />
-
-          <MotionBox
-            position="absolute"
-            top="0"
-            bottom="0"
-            right="0"
-            left="0"
-            h="full"
-            w="full"
-            bgColor={customBgCol}
-            opacity={isPlaying ? 1 : 0}
-            whileHover={{
-              opacity: 1,
-            }}
-            onTap={
-              !isPlaying
-                ? isMobile
-                  ? toggleOpacityState
-                  : undefined
-                : undefined
-            }
-            animate={!isPlaying ? { opacity: opacityState } : undefined}
-          >
-            <VStack
-              position="absolute"
-              top="50%"
-              left="50%"
-              transform="translate(-50%, -50%)"
-            >
-              <Text textAlign="center">{songsText}</Text>
-              {/* Perhaps turn this into a component down the road */}
-              <Divider size="md" />
-              <Button
-                top={1}
-                rightIcon={isPlaying ? <FaStopCircle /> : <FaPlayCircle />}
-                variant="outline"
-                onClick={() => playMusic()}
-              >
-                {isPlaying ? 'Stop' : 'Play'}
-              </Button>
-            </VStack>
-          </MotionBox>
+    <GridItem
+      ref={ref}
+      justifyContent="space-between"
+      position="relative"
+      overflow="hidden"
+      display="flex"
+      bgColor="black"
+      borderTopLeftRadius={5}
+      borderBottomLeftRadius={5}
+    >
+      <Slider
+        orientation="vertical"
+        aria-label="slider-volume"
+        min={-45}
+        max={0}
+        defaultValue={player.current.volume.value}
+        onChange={handleVolChange}
+        value={volState}
+        bgGradient={`linear(to-r, ${customBgCol}, black)`}
+        borderTopLeftRadius={5}
+        borderBottomLeftRadius={5}
+        w={14}
+        h={300}
+      >
+        <SliderTrack>
+          <SliderFilledTrack />
+        </SliderTrack>
+        <SliderThumb />
+      </Slider>
+      <Center position="relative" w="full">
+        <Box position="relative">
+          <Image
+            position="relative"
+            h={300}
+            src={pic}
+            objectFit="cover"
+            align="left"
+          />
         </Box>
-      </Flex>
+        <MotionBox
+          position="absolute"
+          top="0"
+          bottom="0"
+          right="0"
+          left="0"
+          h="full"
+          bgColor={customBgCol}
+          opacity={isPlaying ? 1 : 0}
+          whileHover={{
+            opacity: 1,
+          }}
+          onTap={
+            !isPlaying ? (isMobile ? toggleOpacityState : undefined) : undefined
+          }
+          animate={!isPlaying ? { opacity: opacityState } : undefined}
+        >
+          <VStack
+            position="absolute"
+            top="50%"
+            left="50%"
+            transform="translate(-50%, -50%)"
+          >
+            <Text textAlign="center">{songsText}</Text>
+            {/* Perhaps turn this into a component down the road */}
+            <Divider size="md" />
+            <Button
+              top={1}
+              rightIcon={isPlaying ? <FaStopCircle /> : <FaPlayCircle />}
+              variant="outline"
+              onClick={() => playMusic()}
+            >
+              {isPlaying ? 'Stop' : 'Play'}
+            </Button>
+          </VStack>
+        </MotionBox>
+      </Center>
     </GridItem>
   );
 }
@@ -184,8 +196,11 @@ function Producer() {
       </Heading>
       <Divider />
       <Grid
-        templateColumns={!isMobile ? 'repeat(2, 1fr)' : undefined}
-        w="100%"
+        templateColumns={{
+          base: 'repeat(1, minmax(100px, 100%))',
+          md: 'repeat(2, minmax(100px, 100%))',
+        }}
+        w="full"
         gap={6}
       >
         <MusicBox
@@ -205,35 +220,44 @@ function Producer() {
   );
 }
 
-export default function MusicSection() {
-  return (
-    <VStack
-      mt={20}
-      mb={10}
-      w="full"
-      border="4px"
-      p={10}
-      alignItems="flex-start"
-    >
-      <Heading>Producer</Heading>
-      <Heading size="md">
-        <Text letterSpacing={10}>Of the Music Variety</Text>
-      </Heading>
-      <Divider />
-      <Producer />
-      <Divider />
+export default function MusicSection({ whatSection, setWhatSection }) {
+  if (whatSection === 'Music') {
+    return (
+      <VStack
+        w="full"
+        border={{ base: 0, md: 0, lg: '4px' }}
+        p={{ base: 0, md: 0, lg: 10 }}
+        mt={{ base: 5, lg: 0 }}
+        mb={{ base: 5, lg: 0 }}
+        alignItems="flex-start"
+      >
+        <Flex w="full">
+          <Heading>Producer</Heading>
+          <Spacer />
+          <Nav setWhatSection={setWhatSection} />
+        </Flex>
 
-      <Box display="flex" justifyContent="center" w="full">
-        <Link
-          _hover={{ textTransform: 'none' }}
-          href={'https://soundcloud.com/soriphen'}
-          isExternal
-        >
-          <Button h={20} mt={5} size="lg">
-            Listen to more on Soundcloud
-          </Button>
-        </Link>
-      </Box>
-    </VStack>
-  );
+        <Heading size="md">
+          <Text letterSpacing={10}>Of the Music Variety</Text>
+        </Heading>
+        <Divider />
+        <Producer />
+        <Divider />
+
+        <Box display="flex" justifyContent="center" w="full">
+          <Link
+            _hover={{ textTransform: 'none' }}
+            href={'https://soundcloud.com/soriphen'}
+            isExternal
+          >
+            <Button h={20} mt={5} size="lg">
+              Listen to more on Soundcloud
+            </Button>
+          </Link>
+        </Box>
+      </VStack>
+    );
+  } else {
+    return null;
+  }
 }

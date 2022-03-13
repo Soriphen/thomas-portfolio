@@ -2,9 +2,10 @@ import React from 'react';
 import { ChakraProvider, Container, extendTheme } from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
 
-import TopHeading from './components/TopHeading';
+import Top from './components/Top';
 import WorksSection from './components/Works';
 import MusicSection from './components/Music';
+import Contact from './components/Contact';
 
 const theme = extendTheme({
   styles: {
@@ -27,13 +28,8 @@ const theme = extendTheme({
       },
       variants: {
         primary: props => ({
-          // borderColor: mode('black', 'pink')(props),
-          // position: 'absolute',
           bgColor: 'blue',
           height: '1px',
-          // borderBottomWidth: '1px',
-          // border: 0,
-          // opacity: 0.6,
         }),
       },
     },
@@ -68,16 +64,20 @@ const theme = extendTheme({
 // };
 
 function Site() {
+  const [whatSection, setWhatSection] = React.useState('Top');
   return (
     <Container position={'relative'} maxW="container.xl">
       {/* Top heading title name */}
-      <TopHeading />
+      <Top whatSection={whatSection} setWhatSection={setWhatSection} />
 
       {/* Works section */}
-      <WorksSection />
+      <WorksSection whatSection={whatSection} setWhatSection={setWhatSection} />
 
       {/* Music section */}
-      <MusicSection />
+      <MusicSection whatSection={whatSection} setWhatSection={setWhatSection} />
+
+      {/* Contact section */}
+      <Contact whatSection={whatSection} setWhatSection={setWhatSection} />
     </Container>
   );
 }
