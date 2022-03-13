@@ -140,6 +140,7 @@ function MusicBox({ songsText, pic, song }) {
             h={300}
             src={pic}
             objectFit="cover"
+            objectPosition="center"
             align="left"
           />
         </Box>
