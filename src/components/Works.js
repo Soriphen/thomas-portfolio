@@ -76,10 +76,11 @@ function WorksBox({ worksText, pic, siteLink, codeLink, work }) {
         position="relative"
         h={300}
         src={pic}
-        // border="1px"
+        border="1px"
         objectFit="cover"
+        objectPosition={work !== 'sequencer' ? 'center' : 'left'}
         // backgroundPosition="center"
-        align="left"
+        // align="left"
         transform={work === 'aircall' ? 'scale(1.1)' : undefined}
         top={work === 'aircall' ? -2 : undefined}
       />
