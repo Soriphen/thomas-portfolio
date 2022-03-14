@@ -103,7 +103,7 @@ export default function Top({ whatSection, setWhatSection }) {
                 </MotionText>
               );
             })}
-            <Divider variant="solid" />
+            <Divider />
             {nameChange.split('').map((char, index) => {
               return (
                 <MotionText

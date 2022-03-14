@@ -31,6 +31,12 @@ const theme = extendTheme({
           bgColor: 'blue',
           height: '1px',
         }),
+        solid: props => ({
+          borderColor: mode(
+            'rgba(83, 19, 30, 0.16)',
+            'rgba(255, 255, 255, 0.16)'
+          )(props),
+        }),
       },
     },
     Button: {
