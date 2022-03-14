@@ -144,7 +144,7 @@ function WorksBox({ worksText, pic, siteLink, codeLink, work }) {
   );
 }
 
-function Works() {
+function Works({ dividerCol }) {
   const isMobile = useBreakpointValue({ base: true, lg: false });
 
   return (
@@ -154,7 +154,7 @@ function Works() {
           Recent Work
         </Text>
       </Heading>
-      <Divider />
+      <Divider borderColor={dividerCol} />
       <Grid
         // w={500}
 
@@ -197,7 +197,11 @@ function Works() {
   );
 }
 
-export default function WorksSection({ whatSection, setWhatSection }) {
+export default function WorksSection({
+  dividerCol,
+  whatSection,
+  setWhatSection,
+}) {
   if (whatSection === 'Works') {
     return (
       <VStack
@@ -217,9 +221,9 @@ export default function WorksSection({ whatSection, setWhatSection }) {
         <Heading size="md">
           <Text letterSpacing={10}>MERN Stack</Text>
         </Heading>
-        <Divider />
-        <Works />
-        <Divider />
+        <Divider borderColor={dividerCol} />
+        <Works dividerCol={dividerCol} />
+        <Divider borderColor={dividerCol} />
         <Box display="flex" justifyContent="center" w="full">
           <Link
             _hover={{ textTransform: 'none' }}

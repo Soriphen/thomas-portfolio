@@ -185,7 +185,7 @@ function MusicBox({ songsText, pic, song }) {
   );
 }
 
-function Producer() {
+function Producer({ dividerCol }) {
   const isMobile = useBreakpointValue({ base: true, lg: false });
 
   return (
@@ -195,7 +195,7 @@ function Producer() {
           Past Work
         </Text>
       </Heading>
-      <Divider />
+      <Divider borderColor={dividerCol} />
       <Grid
         templateColumns={{
           base: 'repeat(1, minmax(100px, 100%))',
@@ -221,7 +221,11 @@ function Producer() {
   );
 }
 
-export default function MusicSection({ whatSection, setWhatSection }) {
+export default function MusicSection({
+  dividerCol,
+  whatSection,
+  setWhatSection,
+}) {
   if (whatSection === 'Music') {
     return (
       <VStack
@@ -241,9 +245,9 @@ export default function MusicSection({ whatSection, setWhatSection }) {
         <Heading size="md">
           <Text letterSpacing={10}>Of the Music Variety</Text>
         </Heading>
-        <Divider />
-        <Producer />
-        <Divider />
+        <Divider borderColor={dividerCol} />
+        <Producer dividerCol={dividerCol} />
+        <Divider borderColor={dividerCol} />
 
         <Box display="flex" justifyContent="center" w="full">
           <Link

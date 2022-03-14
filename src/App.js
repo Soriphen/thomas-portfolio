@@ -1,5 +1,10 @@
 import React from 'react';
-import { ChakraProvider, Container, extendTheme } from '@chakra-ui/react';
+import {
+  ChakraProvider,
+  Container,
+  extendTheme,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
 
 import Top from './components/Top';
@@ -71,19 +76,33 @@ const theme = extendTheme({
 
 function Site() {
   const [whatSection, setWhatSection] = React.useState('Top');
+  const dividerCol = useColorModeValue('rgb(83, 19, 30)', 'rgb(255, 255, 255)');
+
   return (
     <Container position={'relative'} maxW="container.xl">
       {/* Top heading title name */}
       <Top whatSection={whatSection} setWhatSection={setWhatSection} />
 
       {/* Works section */}
-      <WorksSection whatSection={whatSection} setWhatSection={setWhatSection} />
+      <WorksSection
+        dividerCol={dividerCol}
+        whatSection={whatSection}
+        setWhatSection={setWhatSection}
+      />
 
       {/* Music section */}
-      <MusicSection whatSection={whatSection} setWhatSection={setWhatSection} />
+      <MusicSection
+        dividerCol={dividerCol}
+        whatSection={whatSection}
+        setWhatSection={setWhatSection}
+      />
 
       {/* Contact section */}
-      <Contact whatSection={whatSection} setWhatSection={setWhatSection} />
+      <Contact
+        dividerCol={dividerCol}
+        whatSection={whatSection}
+        setWhatSection={setWhatSection}
+      />
     </Container>
   );
 }
