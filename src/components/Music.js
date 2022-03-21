@@ -34,7 +34,7 @@ import { songsText } from '../constants';
 import { FaPlayCircle, FaStopCircle } from 'react-icons/fa';
 import Nav from './Nav';
 
-function MusicBox({ songsText, pic, song }) {
+function MusicBox({ songsText, pic, song, dividerCol }) {
   const vol = React.useRef();
   if (!vol.current) {
     vol.current = new Tone.Volume(-5).toDestination();
@@ -208,13 +208,25 @@ function Producer({ dividerCol }) {
           songsText={songsText.statuesqueTxt}
           pic={statuesquePic}
           song={statuesque}
+          dividerCol={dividerCol}
         />
-        <MusicBox songsText={songsText.cabalTxt} pic={maskPic} song={cabal} />
-        <MusicBox songsText={songsText.helmTxt} pic={blackPic} song={helm} />
+        <MusicBox
+          dividerCol={dividerCol}
+          songsText={songsText.cabalTxt}
+          pic={maskPic}
+          song={cabal}
+        />
+        <MusicBox
+          dividerCol={dividerCol}
+          songsText={songsText.helmTxt}
+          pic={blackPic}
+          song={helm}
+        />
         <MusicBox
           songsText={songsText.dresserTxt}
           pic={blackPic}
           song={dresser}
+          dividerCol={dividerCol}
         />
       </Grid>
     </>
